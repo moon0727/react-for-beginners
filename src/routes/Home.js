@@ -23,7 +23,7 @@ function Home() {
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        <div className="m">
+        <div className="allMovies">
           {movies.map((movie) => (
             <Movie
               key={movie.id}
