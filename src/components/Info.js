@@ -1,27 +1,30 @@
 import PropTypes from "prop-types";
-import "../styles.css";
+import styles from "./Info.module.css";
 
-function Info({ coverImg, title, runtime, genres, like, intro }) {
+function Info({ coverImg, title, runtime, genres, like, intro, year }) {
   return (
-    <div className="container">
-      <div className="largeImage">
+    <div className={styles.container}>
+      <div className={styles.info__img}>
         <img src={coverImg} alt={title} />
       </div>
-      <div className="detailInformation">
-        <h1>{title}</h1>
-        <div>
-          ⏱️ :{" "}
-          {runtime > 60
-            ? `${(runtime / 60).toFixed()}h ${runtime % 60}m`
-            : runtime}
-        </div>
-        <div>❤️ : {like}</div>
-        <ul>
+      <div className={styles.info}>
+        <h1 className={styles.info__title}>{title}</h1>
+        <h3 className={styles.info__year}>{year}</h3>
+        <ul className={styles.info__genres}>
           {genres.map((g) => (
             <li key={g}>{g}</li>
           ))}
         </ul>
-        <p className="intro">{intro}</p>
+        <div>
+          ⏱️{" "}
+          {runtime >= 60
+            ? `${(runtime / 60).toFixed()}h ${runtime % 60}m`
+            : runtime === 0
+            ? `Not provided`
+            : runtime}
+        </div>
+        <div>❤️ {like}</div>
+        <p className={styles.info__intro}>{intro}</p>
       </div>
     </div>
   );

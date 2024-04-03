@@ -1,4 +1,4 @@
-.movieItem {
+/* .movieItem {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -60,3 +60,7 @@ ul {
   overflow: auto;
   height: 350px;
 }
+
+Link {
+  color: aqua;
+} */
