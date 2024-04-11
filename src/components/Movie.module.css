@@ -57,3 +57,13 @@
   margin-right: 10px;
   font-size: 14px;
 }
+
+.movie__genres a {
+  color: #2c2c2c;
+  text-decoration: none;
+}
+
+.movie__genres a:hover {
+  text-shadow: 1px 1px 1px gray;
+  content: attr("a");
+}

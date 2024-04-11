@@ -39,6 +39,16 @@
   text-decoration: none;
 }
 
+.info__title a {
+  color: #2c2c2c;
+  text-decoration: none;
+}
+
+.info__title a:hover {
+  text-shadow: 2px 2px 2px gray;
+  content: attr("a");
+}
+
 .info__genres {
   list-style: none;
   padding: 0;
@@ -57,4 +67,12 @@
 .info__intro {
   overflow: auto;
   height: 320px;
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
 }

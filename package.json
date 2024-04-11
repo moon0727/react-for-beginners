@@ -1,5 +1,5 @@
 {
-  "name": "react-for-beginners",
+  "name": "react-movie",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -40,5 +40,5 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://moon0727.github.io/react-for-beginners"
+  "homepage": "https://moon0727.github.io/react-movie"
 }

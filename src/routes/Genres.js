@@ -1,15 +1,19 @@
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Movie from "../components/Movie";
 import styles from "./Home.module.css";
+import MoveHome from "../components/MoveHome";
 import Header from "../components/Header";
 
-function Home() {
+function Genres() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
+  const { g } = useParams();
+
   const getMovies = async () => {
     const json = await (
       await fetch(
-        `https://yts.mx/api/v2/list_movies.json?minimum_rating=9&sort_by=year`
+        `https://yts.mx/api/v2/list_movies.json?minimum_rating=9&sort_by=year&genre=${g}`
       )
     ).json();
     setMovies(json.data.movies);
@@ -17,8 +21,9 @@ function Home() {
   };
 
   useEffect(() => {
+    setLoading(true);
     getMovies();
-  }, []);
+  }, [g]);
 
   return (
     <div>
@@ -28,7 +33,8 @@ function Home() {
         </div>
       ) : (
         <div className={styles.container}>
-          <Header headername="HOME" />
+          <Header headername={`Genre : ${g}`} />
+          <MoveHome />
           <div className={styles.movies}>
             {movies.map((movie) => (
               <Movie
@@ -48,4 +54,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Genres;
