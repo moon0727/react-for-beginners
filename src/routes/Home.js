@@ -2,10 +2,14 @@ import { useState, useEffect } from "react";
 import Movie from "../components/Movie";
 import styles from "./Home.module.css";
 import Header from "../components/Header";
+import Loading from "../components/Loading";
+import Search from "../components/Search";
 
 function Home() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
+  const [showMovies, setShowMovies] = useState([]);
+
   const getMovies = async () => {
     const json = await (
       await fetch(
@@ -14,23 +18,37 @@ function Home() {
     ).json();
     setMovies(json.data.movies);
     setLoading(false);
+    setShowMovies(json.data.movies);
   };
 
   useEffect(() => {
     getMovies();
   }, []);
 
+  const getSearchResult = (search) => {
+    if (search === "") {
+      setShowMovies(movies);
+    } else {
+      setShowMovies(
+        movies.filter((it) =>
+          it.title.toLowerCase().includes(search.toLowerCase())
+        )
+      );
+    }
+  };
+
   return (
     <div>
       {loading ? (
         <div className={styles.loader}>
-          <span>Loading...</span>
+          <Loading />
         </div>
       ) : (
         <div className={styles.container}>
           <Header headername="HOME" />
+          <Search movies={movies} onSubmit={getSearchResult} />
           <div className={styles.movies}>
-            {movies.map((movie) => (
+            {showMovies.map((movie) => (
               <Movie
                 key={movie.id}
                 id={movie.id}

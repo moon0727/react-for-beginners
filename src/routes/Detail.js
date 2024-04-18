@@ -4,6 +4,7 @@ import Info from "../components/Info";
 import styles from "./Detail.module.css";
 import MoveHome from "../components/MoveHome";
 import Header from "../components/Header";
+import Loading from "../components/Loading";
 
 function Detail() {
   const [loading, setLoading] = useState(true);
@@ -27,7 +28,7 @@ function Detail() {
     <div>
       {loading ? (
         <div className={styles.loader}>
-          <span>Loading...</span>
+          <Loading />
         </div>
       ) : (
         <div className={styles.details}>

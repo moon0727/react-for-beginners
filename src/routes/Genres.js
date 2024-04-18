@@ -4,6 +4,7 @@ import Movie from "../components/Movie";
 import styles from "./Home.module.css";
 import MoveHome from "../components/MoveHome";
 import Header from "../components/Header";
+import Loading from "../components/Loading";
 
 function Genres() {
   const [loading, setLoading] = useState(true);
@@ -29,7 +30,7 @@ function Genres() {
     <div>
       {loading ? (
         <div className={styles.loader}>
-          <span>Loading...</span>
+          <Loading />
         </div>
       ) : (
         <div className={styles.container}>
