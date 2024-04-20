@@ -19,7 +19,7 @@ function Search({ movies, onSubmit }) {
       value={search}
       onChange={onChangeSearch}
       onKeyDown={onKeyDown}
-      placeholder="title search..."
+      placeholder="search movies..."
     />
   );
 }

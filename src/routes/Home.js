@@ -30,8 +30,14 @@ function Home() {
       setShowMovies(movies);
     } else {
       setShowMovies(
-        movies.filter((it) =>
-          it.title.toLowerCase().includes(search.toLowerCase())
+        movies.filter(
+          (it) =>
+            it.title.toLowerCase().includes(search.toLowerCase()) ||
+            it.year === Number(search) ||
+            it.genres
+              .map((g) => g.toLowerCase())
+              .includes(search.toLowerCase()) ||
+            it.summary.toLowerCase().includes(search.toLowerCase())
         )
       );
     }

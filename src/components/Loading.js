@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 function Loading() {
   const [loading, setLoading] = useState("");
-  let word = "loading...";
+  let word = "Loading...";
   const indexRef = useRef(0);
 
   useEffect(() => {
